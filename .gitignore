@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs/AdoNetTemplate/v15
+/AdoDB2/bin/x64/Debug
+/AdoNetTemplate/bin/x64/Debug
+/AdoNetTemplateTests/bin/Debug
+/AdoNetTemplateTests/obj/Debug
+/AdoOracle/bin/x64/Debug
+/AdoOracle/obj
+/AdoDB2/obj
+/AdoNetTemplate/obj
+/AdoOracleUnitTest/bin/x64
+/AdoOracleUnitTest/obj
