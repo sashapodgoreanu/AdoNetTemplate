@@ -54,6 +54,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -71,8 +74,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AdoTemplateTests.cs" />
+    <Compile Include="AdoTemplateExtensionsTests.cs" />
+    <Compile Include="AdoTemplateInternalTests.cs" />
+    <Compile Include="AssemblyInit.cs" />
+    <Compile Include="DataBase\MockDbParametersWrapper.cs" />
     <Compile Include="DataBase\MockDbProvider.cs" />
+    <Compile Include="HelperClass\DummyTable.cs" />
+    <Compile Include="HelperClass\DummyTableRowMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +88,10 @@
       <Project>{42619D15-E87A-4C5E-86E7-6A3A532EAA56}</Project>
       <Name>AdoNetTemplate</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

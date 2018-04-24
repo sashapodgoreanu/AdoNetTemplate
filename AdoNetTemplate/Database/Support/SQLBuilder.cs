@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoOracle.Support
+namespace AdoNetTemplate.Database.Support
 {
     /// <summary>
     /// Utility class. 
     /// </summary>
-    public static class OracleSQLBuilder
+    public static class SQLBuilder
     {
         /// <summary>
         /// Builds a insert SQL statement: INSERT INTO <see cref="intoTable"/> (COLUMN1, COLUMN2, ... COLUMNK) VALUES (:COLUMN1, :COLUMN2, ... :COLUMNK)

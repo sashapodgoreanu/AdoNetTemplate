@@ -50,7 +50,11 @@ namespace AdoNetTemplate.Database.Generic
         public TDbParameter this[TKey i]
         {
             get { return _parameters[i]; }
-            set { _parameters[i] = value; }
+            set
+            {
+                _parameters[i] = value;
+                _parameters[i].ParameterName = $"par_{i}";
+            }
         }
 
         public bool ContainsKey(TKey key)

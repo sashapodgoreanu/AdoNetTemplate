@@ -15,7 +15,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
+
 [assembly: InternalsVisibleTo("AdoOracleUnitTest")]
+[assembly: InternalsVisibleTo("AdoNetTemplateTests")]
 namespace AdoNetTemplate
 {
     /// <summary>
@@ -39,7 +41,7 @@ namespace AdoNetTemplate
         /// </summary>
         /// <param name="dbProvider">a provided Data Base Provider</param>
         /// <param name="disposeProviderExternally">if true, this class will not dispose the <paramref name="dbProvider"/></param>
-        public AdoTemplate(IDbProvider dbProvider, bool disposeProviderExternally = false)
+        public AdoTemplate(IDbProvider dbProvider, bool disposeProviderExternally = true)
         {
             DbProvider = dbProvider;
             this.disposeProviderExternally = disposeProviderExternally;
@@ -146,7 +148,7 @@ namespace AdoNetTemplate
             }
             catch (DbException e)
             {
-                throw new DataException("Failed to execute a command cllback", e);
+                throw new DataException($"Failed to execute a command cllback: {e.Message}", e);
             }
             catch (Exception)
             {
@@ -187,7 +189,7 @@ namespace AdoNetTemplate
             }
             catch (DbException e)
             {
-                throw new DataException("Failed to execute a command cllback", e);
+                throw new DataException($"Failed to execute a command cllback: {e.Message}", e);
             }
             catch (Exception)
             {
@@ -361,7 +363,7 @@ namespace AdoNetTemplate
         }
 
         /// <summary>
-        /// Executes a non query with the specified command text, <paramref name="dbParameterSetter"/>, exposing a <see cref="IDataReader"/> via a <paramref name="dataReaderAccessor"/>
+        /// Executes a query with the specified command text, <paramref name="dbParameterSetter"/>, exposing a <see cref="IDataReader"/> via a <paramref name="dataReaderAccessor"/>
         /// </summary>
         /// <param name="cmdType">Text or Stored Procedure</param>
         /// <param name="cmdText">The command text (Select)</param>
@@ -394,11 +396,11 @@ namespace AdoNetTemplate
             }
             catch (DbException e)
             {
-                throw new TransactionException("Cannot begin a transaction", e);
+                throw new TransactionException($"Cannot begin a transaction: {e.Message} ", e);
             }
             catch (DataException e)
             {
-                throw new TransactionException("Cannot begin a transaction", e);
+                throw new TransactionException($"Cannot begin a transaction: {e.Message}", e);
             }
             catch (Exception)
             {
@@ -421,7 +423,7 @@ namespace AdoNetTemplate
             }
             catch (DbException e)
             {
-                throw new DataException("Failed to execute a command cllback", e);
+                throw new DataException($"Failed to execute a command cllback: {e.Message}", e);
             }
             catch (TransactionException)
             {
@@ -688,6 +690,11 @@ namespace AdoNetTemplate
                 this.dbParameterSetter = dbParameterSetter;
             }
 
+            /// <summary>
+            /// Return number of rows affected.
+            /// </summary>
+            /// <param name="dataAdapter"></param>
+            /// <returns></returns>
             public int DoInDataAdapter(IDbDataAdapter dataAdapter)
             {
                 int retVal = 0;
@@ -699,14 +706,13 @@ namespace AdoNetTemplate
                     dbParameterSetter.SetUpParameters(dataAdapter.SelectCommand.Parameters);
                     dbParameterSetter.SetUpCommand(dataAdapter.SelectCommand);
                 }
-                //TODO should query metadata to see if supports filling dataTable directly.
+
                 if (dataAdapter is DbDataAdapter)
                 {
                     retVal = ((DbDataAdapter)dataAdapter).Fill(_dataTable);
                 }
                 else
                 {
-                    //TODO could create DataSet and extract DataTable... for now just throw
                     throw new DataException("Provider does not support filling DataTable directly");
                 }
                 

@@ -10,9 +10,9 @@ using AdoNetTemplate.Database.Core;
 using System.Data;
 using System.Data.Common;
 using static AdoNetTemplate.AdoTemplate;
-using AdoOracle.Support;
 using AdoOracleUnitTest.HelperClass;
 using System.Collections.Generic;
+using AdoNetTemplate.Database.Support;
 
 namespace AdoOracleUnitTest
 {
@@ -122,7 +122,7 @@ VALUES ('3', '2', '3', '4', '5', '6', '7', TO_DATE('2018-04-23 16:35:31', 'YYYY-
                     opw.SetClob("COL_CLOB"   ,     "BIG STRING");
 
                     NonQueryCallBack t = new NonQueryCallBack(CommandType.Text,
-                        OracleSQLBuilder.BuildInsert("DUMMY_TABLE", new[]
+                        SQLBuilder.BuildInsert("DUMMY_TABLE", new[]
                         {
                         "COL_ID"            ,
                         "COL_INT"           ,
@@ -179,13 +179,6 @@ VALUES ('3', '2', '3', '4', '5', '6', '7', TO_DATE('2018-04-23 16:35:31', 'YYYY-
                     Assert.Fail("Incorect result.");
                 }*/
             }
-        }
-
-        [TestMethod()]
-        [TestCategory("AdoTemplate")]
-        public void ExecuteTest1()
-        {
-            Assert.Fail();
         }
 
         [TestMethod]
@@ -363,80 +356,6 @@ end;
                     
                 }
             }
-        }
-
-        
-
-        [TestMethod()]
-        public void ExecuteNonQueryTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ExecuteScalarTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForDataTableTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForListTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForListTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ExecuteQueryTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ExecuteQueryTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void BeginTransactionTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void CommitTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RollBackTest()
-        {
-            Assert.Fail();
         }
     }
 }

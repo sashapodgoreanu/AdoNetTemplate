@@ -9,11 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoNetTemplateTests.DataBase
+namespace AdoNetTemplate.Tests.DataBase
 {
     public class MockDbProvider : GenericDbProvider<DbConnection, DbTransaction>
     {
-        private bool disposed;
         private DbConnection _connection;
 
         protected override DbConnection CreateConnection()
@@ -21,9 +20,10 @@ namespace AdoNetTemplateTests.DataBase
             return _connection;
         }
 
-        public MockDbProvider(DbConnection connection) : base(connection)
+        public MockDbProvider(DbConnection connection, string connString) : base(connection)
         {
             _connection = connection;
+            ConnectionString = connString;
         }
     }
 }

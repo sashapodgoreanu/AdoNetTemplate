@@ -81,7 +81,6 @@
     <Compile Include="Database\OracleFactory.cs" />
     <Compile Include="Database\OracleParametersExtensions.cs" />
     <Compile Include="Database\OracleParametersWrapper.cs" />
-    <Compile Include="Support\OracleSQLBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -454,7 +454,7 @@ namespace AdoNetTemplate
             return adoTemplate.QueryForList(cmdType, cmdText, dbParameterSetter, rowMapper);
         }
         /// <summary>
-        /// Executes a non query with the specified command text, <paramref name="dbParameterSetter"/>, exposing a <see cref="IDataReader"/> via a callback action
+        /// Executes a query with the specified command text, <paramref name="dbParameterSetter"/>, exposing a <see cref="IDataReader"/> via a callback action
         /// </summary>
         /// <param name="adoTemplate"></param>
         /// <param name="cmdType">Text or Stored Procedure</param>
