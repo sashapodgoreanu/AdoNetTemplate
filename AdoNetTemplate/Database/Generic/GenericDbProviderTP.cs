@@ -96,5 +96,9 @@ namespace AdoNetTemplate.Database.Generic
             return string.Format($"Transaction {Transaction?.GetHashCode()} isolationLevel={Transaction?.IsolationLevel.ToString()}");
         }
 
+        protected override DbCon CreateConnection()
+        {
+            return new DbCon();
+        }
     }
 }

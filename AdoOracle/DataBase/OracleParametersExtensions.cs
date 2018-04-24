@@ -82,15 +82,43 @@ namespace AdoOracle.Database
         public static void SetDecimal<TKey>(this OracleParametersWrapper<TKey> paramWrapper, TKey key, decimal?[] value) =>
             SetInValueInternal(paramWrapper, key, value);
 
+        /// <summary>
+        /// Used to bind a bool value to a parameter of an oracle PLS/SQL procedure or function.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="paramWrapper"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void SetBoolean<TKey>(this OracleParametersWrapper<TKey> paramWrapper, TKey key, bool value) =>
             SetInValueInternal(paramWrapper, key, value);
 
+        /// <summary>
+        /// Used to bind a bool value value to a parameter of an oracle PLS/SQL procedure or function.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="paramWrapper"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void SetBoolean<TKey>(this OracleParametersWrapper<TKey> paramWrapper, TKey key, bool? value) =>
             SetInValueInternal(paramWrapper, key, value);
 
+        /// <summary>
+        /// Used to bind a bool value to a parameter of an oracle PLS/SQL procedure or function.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="paramWrapper"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void SetBoolean<TKey>(this OracleParametersWrapper<TKey> paramWrapper, TKey key, bool?[] value) => 
             SetInValueInternal(paramWrapper, key, value);
 
+        /// <summary>
+        /// Used to bind a bool value to a parameter of an oracle PLS/SQL procedure or function.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="paramWrapper"></param>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void SetBoolean<TKey>(this OracleParametersWrapper<TKey> paramWrapper, TKey key, bool[] value) =>
             SetInValueInternal<bool, TKey>(paramWrapper, key, value);
 
@@ -241,7 +269,7 @@ namespace AdoOracle.Database
                         break;
 
                     case TypeCode.Boolean:
-                        p.OracleDbType = OracleDbType.Boolean;
+                        p.OracleDbType = OracleDbType.Boolean;                           
                         break;
 
                     default:

@@ -11,6 +11,8 @@ using System.Data;
 using System.Data.Common;
 using static AdoNetTemplate.AdoTemplate;
 using AdoOracle.Support;
+using AdoOracleUnitTest.HelperClass;
+using System.Collections.Generic;
 
 namespace AdoOracleUnitTest
 {
@@ -18,8 +20,15 @@ namespace AdoOracleUnitTest
     public class AdoTemplateUnitTest
     {
 
-        public string ConnectionString;
+        public const string ConnectionString = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.175.41.33)(PORT=1521))(CONNECT_DATA=(FAILOVER_MODE=(TYPE=select)(METHOD=basic))(SERVER=dedicated)(SERVICE_NAME=ORA12DB)));User ID=monitor;Password=monitor;";
         public OracleFactory OracleFactory;
+        private TestContext testContextInstance;
+
+        public TestContext TestContext
+        {
+            get { return testContextInstance; }
+            set { testContextInstance = value; }
+        }
 
         private const string createDummyTable =
 @"CREATE TABLE DUMMY_TABLE 
@@ -30,7 +39,7 @@ namespace AdoOracleUnitTest
     COL_DOUBLE BINARY_DOUBLE,
     COL_DECIMAL NUMBER,
     COL_STRING VARCHAR2(3000),
-    COL_CHAR CHAR,
+    COL_CHAR CHAR(1),
     COL_DATE DATE,
     COL_CLOB CLOB
 )";
@@ -38,44 +47,65 @@ namespace AdoOracleUnitTest
         private const string dropDummyTable =
 @"DROP TABLE DUMMY_TABLE";
 
-        [TestInitialize]
-        public void Initialize()
+
+
+        [AssemblyInitialize()]
+        public static void AssemblyInit(TestContext context)
         {
-            OracleFactory = new OracleFactory();
+            OracleFactory OracleFactory = new OracleFactory();
+            using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
+            {
+                try
+                {
+                    adoTemplate.ExecuteNonQuery(createDummyTable);
+                    adoTemplate.ExecuteNonQuery(
+@"INSERT INTO DUMMY_TABLE (COL_ID, COL_INT, COL_LONG, COL_DOUBLE, COL_DECIMAL, COL_STRING, COL_CHAR, COL_DATE, COL_CLOB) 
+VALUES ('1', '2', '3', '4', '5', '6', '7', TO_DATE('2018-04-23 16:35:31', 'YYYY-MM-DD HH24:MI:SS'), '8')"
+);
+                    adoTemplate.ExecuteNonQuery(
+@"INSERT INTO DUMMY_TABLE (COL_ID, COL_INT, COL_LONG, COL_DOUBLE, COL_DECIMAL, COL_STRING, COL_CHAR, COL_DATE, COL_CLOB) 
+VALUES ('2', '2', '3', '4', '5', '6', '7', TO_DATE('2018-04-23 16:35:31', 'YYYY-MM-DD HH24:MI:SS'), '8')"
+);
+                    adoTemplate.ExecuteNonQuery(
+@"INSERT INTO DUMMY_TABLE (COL_ID, COL_INT, COL_LONG, COL_DOUBLE, COL_DECIMAL, COL_STRING, COL_CHAR, COL_DATE, COL_CLOB) 
+VALUES ('3', '2', '3', '4', '5', '6', '7', TO_DATE('2018-04-23 16:35:31', 'YYYY-MM-DD HH24:MI:SS'), '8')"
+);
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
 
 
-            ConnectionString = ConfigurationManager.ConnectionStrings["Oracle"].ConnectionString;
+        //[AssemblyCleanup]
+        public static void CleanupA()
+        {
+            OracleFactory OracleFactory = new OracleFactory();
             using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
             {
                 try
                 {
                     adoTemplate.ExecuteNonQuery(dropDummyTable);
                 }
-                catch
+                catch (Exception x)
                 { }
-
-                adoTemplate.ExecuteNonQuery(createDummyTable);
             }
+        }
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            OracleFactory = new OracleFactory();
         }
 
         [TestCleanup]
         public void Cleanup()
         {
-            using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
-            {
-                try
-                {
-                    adoTemplate.ExecuteNonQuery(dropDummyTable);
-                }
-                catch
-                { }
-
-            }
         }
-
+        
         [TestMethod()]
         [TestCategory("AdoTemplate")]
-        public void ExecuteTest()
+        public void ExecuteTest_NonQueryCallBack()
         {
             using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
             {
@@ -88,7 +118,6 @@ namespace AdoOracleUnitTest
                     opw.SetDouble("COL_DOUBLE" ,   1 );
                     opw.SetDecimal("COL_DECIMAL",  1 );
                     opw.SetString("COL_STRING" ,   "empty" );
-                    opw.SetBoolean("COL_CHAR", true );
                     opw.SetDateTime("COL_DATE"   , DateTime.Now );
                     opw.SetClob("COL_CLOB"   ,     "BIG STRING");
 
@@ -101,12 +130,54 @@ namespace AdoOracleUnitTest
                         "COL_DOUBLE"        ,
                         "COL_DECIMAL"       ,
                         "COL_STRING"        ,
-                        "COL_CHAR"          ,
                         "COL_DATE"          ,
                         "COL_CLOB"          ,
                         }), opw);
                     int result = adoTemplate.Execute(t);
+                    if (result != 1)
+                    {
+                        Assert.Fail("expected 1 insert.");
+                    }
                 }
+            }
+        }
+
+        [TestMethod()]
+        [TestCategory("AdoTemplate")]
+        [DataSource("Oracle.ManagedDataAccess.Client", ConnectionString,"DUMMY_TABLE", DataAccessMethod.Sequential)]
+        public void ExecuteTest_QueryCallback()
+        {
+            using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
+            {
+                var mapper = new DummyTableRowMapper();
+                var rmrse = new RowMapperResultSetExtractor<DummyTable>(mapper);
+                var t = new QueryCallback<IList<DummyTable>>(CommandType.Text,"select * from DUMMY_TABLE", null, rmrse);
+                var result = adoTemplate.Execute(t);
+
+                if (result.Count() != TestContext.DataRow.Table.Rows.Count)
+                {
+                    Assert.Fail("Incorect result.");
+                }
+            }
+        }
+
+
+        [TestMethod()]
+        [TestCategory("AdoTemplate")]
+        [DataSource("Oracle.ManagedDataAccess.Client", ConnectionString, "DUMMY_TABLE", DataAccessMethod.Sequential)]
+        public void ExecuteTest_QueryCallbackDBDataReader()
+        {
+            using (var adoTemplate = OracleFactory.CreateAdoTemplate(ConnectionString))
+            {
+                /*var mapper = new DummyTableRowMapper();
+                var rmrse = new RowMapperResultSetExtractor<DummyTable>(mapper);
+                var t = new QueryCallbackDBDataReader(CommandType.Text, "select * from DUMMY_TABLE", null, rmrse);
+                var result = adoTemplate.Execute(t);
+
+                if (result.Count() != TestContext.DataRow.Table.Rows.Count)
+                {
+                    Assert.Fail("Incorect result.");
+                }*/
             }
         }
 

@@ -89,6 +89,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Database\OracleDbProviderUnitTest.cs" />
+    <Compile Include="HelperClass\DummyTable.cs" />
+    <Compile Include="HelperClass\DummyTableRowMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdoTemplateUnitTest.cs" />
   </ItemGroup>

@@ -26,6 +26,10 @@ namespace AdoOracle.Database
         {
         }
 
+        protected override OracleConnection CreateConnection()
+        {
+            return new OracleConnection();
+        }
 
         /// <summary>
         /// Open the connection.

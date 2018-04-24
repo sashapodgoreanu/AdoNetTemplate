@@ -14,8 +14,8 @@ namespace AdoNetTemplate.Database.Generic
     /// <summary>
     /// This class manage the connections and transactions.
     /// </summary>
-    public class GenericDbProvider<DbCon, DbTrx> : IDbProvider
-        where DbCon : DbConnection, new()
+    public abstract class GenericDbProvider<DbCon, DbTrx> : IDbProvider
+        where DbCon : DbConnection
         where DbTrx : DbTransaction
 
     {
@@ -32,11 +32,16 @@ namespace AdoNetTemplate.Database.Generic
         /// </summary>
         protected EventHandler CommitObserver;
 
+        protected abstract DbCon CreateConnection();
+
         public GenericDbProvider(string connectionString)
         {
-            if (connectionString == null)
-                throw new ArgumentNullException("Connection string is null.");
-            ConnectionString = connectionString;
+            ConnectionString = connectionString ?? throw new ArgumentNullException("Connection string is null.");
+        }
+
+        public GenericDbProvider(DbCon connection)
+        {
+            this.connection = connection ?? throw new ArgumentNullException("connection is null.");
         }
 
         public string ConnectionString
@@ -69,14 +74,9 @@ namespace AdoNetTemplate.Database.Generic
                 {
                     logger.Trace($"Creating new connection");
                     //we don't have a connection.
-                    connection = new DbCon();
+                    connection = CreateConnection();
                     connection.ConnectionString = ConnectionString;
                     OpenConnectionInternal();
-                    //OracleGlobalization info = connection.GetSessionInfo();
-                    // '.' decimal separator
-                    // ',' thousand separator
-                    //info.NumericCharacters = ".,";
-                    //connection.SetSessionInfo(info);
                 }
             }
             catch (Exception ex)

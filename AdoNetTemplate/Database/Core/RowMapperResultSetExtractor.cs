@@ -41,9 +41,7 @@ namespace AdoNetTemplate.Database.Core
         /// </summary>
         public RowMapperResultSetExtractor(IRowMapper<T> rowMapper)
         {
-            if (rowMapper == null)
-                throw new ArgumentNullException("null rowmapper");
-            RowMapper = rowMapper;
+            RowMapper = rowMapper ?? throw new ArgumentNullException("null rowmapper");
 
         }
 

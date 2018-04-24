@@ -20,10 +20,7 @@ namespace AdoNetTemplate.Database.Core
 
         public IRowMapImplementor (Func<IDataReader, int, T> handle)
         {
-            if (handle == null)
-                throw new ArgumentNullException("Null handle.");
-
-            this.handle = handle;
+            this.handle = handle ?? throw new ArgumentNullException("Null handle.");
         }
 
         /// <summary>

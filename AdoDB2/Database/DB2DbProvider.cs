@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLog;
+using System.Data.Common;
 
 namespace AdoDB2.Database
 {
@@ -16,6 +17,11 @@ namespace AdoDB2.Database
     {
         public DB2DbProvider(string connectionString) : base(connectionString)
         {
+        }
+
+        protected override DB2Connection CreateConnection()
+        {
+            return new DB2Connection();
         }
     }
 }

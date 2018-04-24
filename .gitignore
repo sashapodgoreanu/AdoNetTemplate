@@ -13,3 +13,10 @@
 /AdoNetTemplate/obj
 /AdoOracleUnitTest/bin/x64
 /AdoOracleUnitTest/obj
+/AdoDB2/bin/Debug
+/AdoNetTemplate/bin/Debug
+/AdoNetTemplateTests/bin/x64/Debug
+/AdoNetTemplateTests/obj/x64/Debug
+/AdoOracle/bin/Debug
+/AdoOracleUnitTest/bin/Debug
+/packages
