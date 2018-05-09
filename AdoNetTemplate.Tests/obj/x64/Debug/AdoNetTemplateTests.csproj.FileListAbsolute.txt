@@ -1,0 +1,15 @@
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplateTests.dll.config
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplateTests.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplateTests.pdb
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplate.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\Oracle.ManagedDataAccess.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\NLog.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplate.pdb
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\AdoNetTemplate.dll.config
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\bin\x64\Debug\NLog.xml
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\obj\x64\Debug\AdoNetTemplateTests.csprojResolveAssemblyReference.cache
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\obj\x64\Debug\AdoNetTemplateTests.csproj.CoreCompileInputs.cache
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\obj\x64\Debug\AdoNetTemplateTests.csproj.CopyComplete
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\obj\x64\Debug\AdoNetTemplateTests.dll
+C:\GIT\AdoNetTemplate\AdoNetTemplateTests\obj\x64\Debug\AdoNetTemplateTests.pdb

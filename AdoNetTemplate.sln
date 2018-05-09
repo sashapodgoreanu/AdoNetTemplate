@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoDB2", "AdoDB2\AdoDB2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoOracleUnitTest", "AdoOracleUnitTest\AdoOracleUnitTest.csproj", "{67C7EB6C-B828-4293-B9AB-9522F96E50C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetTemplateTests", "AdoNetTemplateTests\AdoNetTemplateTests.csproj", "{BE98B972-7BA5-4771-8AE8-89679F055399}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetTemplate.Tests", "AdoNetTemplate.Tests\AdoNetTemplate.Tests.csproj", "{BE98B972-7BA5-4771-8AE8-89679F055399}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

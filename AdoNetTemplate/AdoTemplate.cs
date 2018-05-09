@@ -17,7 +17,7 @@ using System.Transactions;
 
 
 [assembly: InternalsVisibleTo("AdoOracleUnitTest")]
-[assembly: InternalsVisibleTo("AdoNetTemplateTests")]
+[assembly: InternalsVisibleTo("AdoNetTemplate.Tests")]
 namespace AdoNetTemplate
 {
     /// <summary>
