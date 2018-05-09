@@ -8,8 +8,8 @@ C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\bin\x64\Debug\NLog.dll
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\bin\x64\Debug\AdoNetTemplate.pdb
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\bin\x64\Debug\AdoNetTemplate.dll.config
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\bin\x64\Debug\NLog.xml
-C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.csprojResolveAssemblyReference.cache
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.csproj.CoreCompileInputs.cache
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.csproj.CopyComplete
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.dll
 C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.pdb
+C:\GIT\AdoNetTemplate\AdoNetTemplate.Tests\obj\x64\Debug\AdoNetTemplate.Tests.csprojAssemblyReference.cache

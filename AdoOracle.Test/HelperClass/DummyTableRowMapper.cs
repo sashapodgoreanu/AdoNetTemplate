@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoOracleUnitTest.HelperClass
+namespace AdoOracle.Test.HelperClass
 {
     internal class DummyTableRowMapper : IRowMapper<DummyTable>
     {

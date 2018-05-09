@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdoOracleUnitTest.HelperClass
+namespace AdoOracle.Test.HelperClass
 {
     internal class DummyTable
     {

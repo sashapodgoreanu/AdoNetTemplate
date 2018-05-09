@@ -7,7 +7,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AdoOracleUnitTest.Database
+namespace AdoOracle.Test.Database
 {
     [TestClass]
     public class OracleDbProviderUnitTest

@@ -1,0 +1,17 @@
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.Test.dll.config
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.Test.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.Test.pdb
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoNetTemplate.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\NLog.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\Oracle.ManagedDataAccess.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoNetTemplate.pdb
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoNetTemplate.dll.config
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.pdb
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\AdoOracle.dll.config
+C:\GIT\AdoNetTemplate\AdoOracle.Test\bin\x64\Debug\NLog.xml
+C:\GIT\AdoNetTemplate\AdoOracle.Test\obj\x64\Debug\AdoOracle.Test.csprojAssemblyReference.cache
+C:\GIT\AdoNetTemplate\AdoOracle.Test\obj\x64\Debug\AdoOracle.Test.csproj.CoreCompileInputs.cache
+C:\GIT\AdoNetTemplate\AdoOracle.Test\obj\x64\Debug\AdoOracle.Test.csproj.CopyComplete
+C:\GIT\AdoNetTemplate\AdoOracle.Test\obj\x64\Debug\AdoOracle.Test.dll
+C:\GIT\AdoNetTemplate\AdoOracle.Test\obj\x64\Debug\AdoOracle.Test.pdb

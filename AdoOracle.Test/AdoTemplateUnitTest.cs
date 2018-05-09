@@ -10,11 +10,11 @@ using AdoNetTemplate.Database.Core;
 using System.Data;
 using System.Data.Common;
 using static AdoNetTemplate.AdoTemplate;
-using AdoOracleUnitTest.HelperClass;
+using AdoOracle.Test.HelperClass;
 using System.Collections.Generic;
 using AdoNetTemplate.Database.Support;
 
-namespace AdoOracleUnitTest
+namespace AdoOracle.Test
 {
     [TestClass]
     public class AdoTemplateUnitTest
