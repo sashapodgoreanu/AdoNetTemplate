@@ -1,0 +1,17 @@
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracleUnitTest.dll.config
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracleUnitTest.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracleUnitTest.pdb
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoNetTemplate.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracle.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\NLog.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoNetTemplate.pdb
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoNetTemplate.dll.config
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracle.pdb
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\AdoOracle.dll.config
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\bin\Debug\NLog.xml
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\obj\Debug\AdoOracleUnitTest.csprojResolveAssemblyReference.cache
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\obj\Debug\AdoOracleUnitTest.csproj.CoreCompileInputs.cache
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\obj\Debug\AdoOracleUnitTest.csproj.CopyComplete
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\obj\Debug\AdoOracleUnitTest.dll
+C:\GIT\AdoNetTemplate\AdoOracleUnitTest\obj\Debug\AdoOracleUnitTest.pdb

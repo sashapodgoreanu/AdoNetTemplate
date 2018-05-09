@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 
 
-[assembly: InternalsVisibleTo("AdoOracleUnitTest")]
+[assembly: InternalsVisibleTo("AdoOracle.Test")]
 [assembly: InternalsVisibleTo("AdoNetTemplate.Tests")]
 namespace AdoNetTemplate
 {

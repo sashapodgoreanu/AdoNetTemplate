@@ -11,7 +11,7 @@ using System.Transactions;
 namespace AdoNetTemplate.Database.Generic
 {
     /// <summary>
-    /// Manage a generic 
+    /// Manages a generic transactions.
     /// </summary>
     public class GenericDataAccessProviderTP<DbCon, DbTrx> : GenericDbProvider<DbCon, DbTrx>, ITransactionParticipant
         where DbCon : DbConnection, new()
@@ -24,12 +24,12 @@ namespace AdoNetTemplate.Database.Generic
         {
             add
             {
-                base.CommitObserver += value;
+                CommitObserver += value;
             }
 
             remove
             {
-                base.CommitObserver -= value;
+                CommitObserver -= value;
             }
         }
 

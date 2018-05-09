@@ -1,0 +1,16 @@
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoOracleUnitTest.dll.config
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoOracleUnitTest.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoOracleUnitTest.pdb
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoNetTemplate.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoOracle.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\Oracle.ManagedDataAccess.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\NLog.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoNetTemplate.pdb
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoNetTemplate.dll.config
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\AdoOracle.pdb
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\bin\x64\Release\NLog.xml
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\obj\x64\Release\AdoOracleUnitTest.csprojResolveAssemblyReference.cache
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\obj\x64\Release\AdoOracleUnitTest.csproj.CoreCompileInputs.cache
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\obj\x64\Release\AdoOracleUnitTest.csproj.CopyComplete
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\obj\x64\Release\AdoOracleUnitTest.dll
+C:\TFS\TadScheduler\Code\AdoNetTools-DB2\AdoOracleUnitTest\obj\x64\Release\AdoOracleUnitTest.pdb

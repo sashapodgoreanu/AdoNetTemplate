@@ -162,69 +162,192 @@ namespace AdoNetTemplate.Tests
                 
                 var retVal = adoTemplate.QueryForList("select * from DUMMY_TABLE", new DummyTableRowMapper());
 
-                Assert.AreEqual(retVal, 1);
-                
+                Assert.IsNotNull(retVal.FirstOrDefault());
+
             }
         }
 
         [TestMethod()]
         public void QueryForListTest2()
         {
-            Assert.Fail();
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
+
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                using (var opw = new MockDbParametersWrapper<string>(connection))
+                {
+                    opw.Bind(command => {
+
+                        opw["param"] = command.CreateParameter();
+                        opw["param"].Value = 1;
+                        opw["param"].DbType = DbType.String;
+                        opw["param"].Direction = ParameterDirection.Input;
+                    });
+
+                    var retVal = adoTemplate.QueryForList(
+                        "select * from DUMMY_TABLE where 1 = :param",
+                        opw,
+                        new DummyTableRowMapper());
+
+                    Assert.IsNotNull(retVal.FirstOrDefault());
+                }
+            }
         }
 
         [TestMethod()]
         public void QueryForListTest3()
         {
-            Assert.Fail();
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
+
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                using (var opw = new MockDbParametersWrapper<string>(connection))
+                {
+                    opw.Bind(command => {
+
+                        opw["param"] = command.CreateParameter();
+                        opw["param"].Value = 1;
+                        opw["param"].DbType = DbType.String;
+                        opw["param"].Direction = ParameterDirection.Input;
+                    });
+
+                    var retVal = adoTemplate.QueryForList(
+                        "select * from DUMMY_TABLE where 1 = :param",
+                        opw,
+                        (r, i) => 
+                        {
+                            var mapper = new DummyTableRowMapper();
+                            return mapper.MapRow(r,i);
+                        });
+
+                    Assert.IsNotNull(retVal.FirstOrDefault());
+                }
+            }
         }
 
         [TestMethod()]
         public void QueryForListTest4()
         {
-            Assert.Fail();
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
+
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                using (var opw = new MockDbParametersWrapper<string>(connection))
+                {
+                    opw.Bind(command => {
+
+                        opw["param"] = command.CreateParameter();
+                        opw["param"].Value = 1;
+                        opw["param"].DbType = DbType.String;
+                        opw["param"].Direction = ParameterDirection.Input;
+                    });
+
+                    var retVal = adoTemplate.QueryForList(
+                        "select * from DUMMY_TABLE where 1 = :param",
+                        opw,
+                        (r, i) =>
+                        {
+                            var mapper = new DummyTableRowMapper();
+                            return mapper.MapRow(r, i);
+                        });
+
+                    Assert.IsNotNull(retVal.FirstOrDefault());
+                }
+            }
         }
 
         [TestMethod()]
         public void QueryForListTest5()
         {
-            Assert.Fail();
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
+
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                using (var opw = new MockDbParametersWrapper<string>(connection))
+                {
+                    opw.Bind(command => {
+
+                        opw["param"] = command.CreateParameter();
+                        opw["param"].Value = 1;
+                        opw["param"].DbType = DbType.String;
+                        opw["param"].Direction = ParameterDirection.Input;
+                    });
+
+                    var retVal = adoTemplate.QueryForList(
+                        "select * from DUMMY_TABLE where 1 = :param",
+                        opw,
+                        (r) =>
+                        {
+                            var mapper = new DummyTableRowMapper();
+                            var list = new List<DummyTable>();
+                            var i = 0;
+                            while (r.Read())
+                            {
+                                list.Add(mapper.MapRow(r, i++));
+                            }
+
+                            return list;
+                        });
+
+                    Assert.IsNotNull(retVal.FirstOrDefault());
+                }
+            }
         }
 
         [TestMethod()]
         public void QueryForListTest6()
         {
-            Assert.Fail();
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
+
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                var retVal = adoTemplate.QueryForList(
+                    "select * from DUMMY_TABLE",
+                    (r) =>
+                    {
+                        var mapper = new DummyTableRowMapper();
+                        var list = new List<DummyTable>();
+                        var i = 0;
+                        while (r.Read())
+                        {
+                            list.Add(mapper.MapRow(r, i++));
+                        }
+
+                        return list;
+                    });
+                    Assert.IsNotNull(retVal.FirstOrDefault());
+            }
         }
 
         [TestMethod()]
         public void QueryForListTest7()
         {
-            Assert.Fail();
-        }
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
 
-        [TestMethod()]
-        public void QueryForListTest8()
-        {
-            Assert.Fail();
-        }
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                var retVal = adoTemplate.QueryForList(
+                    "select * from DUMMY_TABLE where 1 = :param",
+                    (r, i) =>
+                    {
+                        var mapper = new DummyTableRowMapper();
+                        return mapper.MapRow(r, i);
+                    });
 
-        [TestMethod()]
-        public void QueryForListTest9()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForListTest10()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForListTest11()
-        {
-            Assert.Fail();
+                Assert.IsNotNull(retVal.FirstOrDefault());
+            }
         }
 
         [TestMethod()]

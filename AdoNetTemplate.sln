@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoOracle", "AdoOracle\AdoO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoDB2", "AdoDB2\AdoDB2.csproj", "{F855328C-37CC-4F47-9CB2-C4F44312F509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoOracleUnitTest", "AdoOracleUnitTest\AdoOracleUnitTest.csproj", "{67C7EB6C-B828-4293-B9AB-9522F96E50C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoOracle.Test", "AdoOracle.Test\AdoOracle.Test.csproj", "{67C7EB6C-B828-4293-B9AB-9522F96E50C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetTemplate.Tests", "AdoNetTemplate.Tests\AdoNetTemplate.Tests.csproj", "{BE98B972-7BA5-4771-8AE8-89679F055399}"
 EndProject
