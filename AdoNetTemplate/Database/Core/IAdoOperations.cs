@@ -60,18 +60,6 @@ namespace AdoNetTemplate.Database.Core
         /// <returns></returns>
         DataTable QueryForDataTable(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter);
 
-
-        /// <summary>
-        /// Executes a query with the specified command text and <typeparamref name="dbParameterSetter"/>, mapping a result to an object via a <typeparamref name="rowMapper"/> and post process it via a <typeparamref name="objectFormatter"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cmdType">Text or Stored Procedure</param>
-        /// <param name="cmdText">The command text (Select)</param>
-        /// <param name="dbParameterSetter">The parameter setter to bind to the query</param>
-        /// <param name="rowMapper">maps a result to an object</param> 
-        /// <returns></returns>
-        T QueryForObject<T>(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter, IRowMapper<T> rowMapper);
-
         /// <summary>
         /// Executes a query with the specified command text and <typeparamref name="dbParameterSetter"/>, mapping a result to an object via a <typeparamref name="rowMapper"/> and post process it via a <typeparamref name="objectFormatter"/>
         /// </summary>

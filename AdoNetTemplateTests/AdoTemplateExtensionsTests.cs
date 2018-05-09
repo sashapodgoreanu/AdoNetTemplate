@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data.Common;
 using AdoNetTemplate.Tests.DataBase;
 using System.Data;
+using AdoNetTemplateTests.HelperClass;
 
 namespace AdoNetTemplate.Tests
 {
@@ -57,13 +58,13 @@ namespace AdoNetTemplate.Tests
                     
                 }
 
-                var result2 = adoTemplate.ExecuteScalar<int>("select 1 from dual");
+                var result2 = adoTemplate.ExecuteScalar<int>("select 1 from DUMMY_TABLE");
                 Assert.IsTrue(result2 == 1);
 
-                var result12 = adoTemplate.ExecuteScalar<int>(CommandType.Text, "select 1 from dual");
+                var result12 = adoTemplate.ExecuteScalar<int>(CommandType.Text, "select 1 from DUMMY_TABLE");
                 Assert.IsTrue(result12 == 1);
 
-                var result13 = adoTemplate.ExecuteScalar(CommandType.Text, "select 1 from dual");
+                var result13 = adoTemplate.ExecuteScalar(CommandType.Text, "select 1 from DUMMY_TABLE");
                 Assert.IsTrue(Convert.ToInt32(result13) == 1);
 
                 using (var opw = new MockDbParametersWrapper<string>(connection))
@@ -76,7 +77,7 @@ namespace AdoNetTemplate.Tests
                         opw["param"].Direction = ParameterDirection.Input;
                     });
 
-                    var result3 = adoTemplate.ExecuteScalar<int>("select 1 from dual where 1 = :opw", opw);
+                    var result3 = adoTemplate.ExecuteScalar<int>("select 1 from DUMMY_TABLE where 1 = :opw", opw);
                     Assert.IsTrue(result3 == 1);
 
                     opw.Bind(command => {
@@ -87,7 +88,7 @@ namespace AdoNetTemplate.Tests
                         opw["param"].Direction = ParameterDirection.Input;
                     });
 
-                    var result32 = adoTemplate.ExecuteScalar<int>(CommandType.Text, "select 1 from dual where 1 = :opw", opw);
+                    var result32 = adoTemplate.ExecuteScalar<int>(CommandType.Text, "select 1 from DUMMY_TABLE where 1 = :opw", opw);
                     Assert.IsTrue(result32 == 1);
 
                     opw.Bind(command => {
@@ -98,7 +99,7 @@ namespace AdoNetTemplate.Tests
                         opw["param"].Direction = ParameterDirection.Input;
                     });
 
-                    var result33 = adoTemplate.ExecuteScalar(CommandType.Text, "select 1 from dual where 1 = :opw", opw);
+                    var result33 = adoTemplate.ExecuteScalar(CommandType.Text, "select 1 from DUMMY_TABLE where 1 = :opw", opw);
                     Assert.IsTrue(Convert.ToInt32(result33) == 1);
                 }
             }
@@ -113,58 +114,35 @@ namespace AdoNetTemplate.Tests
 
             using (var adoTemplate = new AdoTemplate(mockDbProvider))
             {
-                //TODO PARTIRE DA QUI.
-                adoTemplate.ExecuteNonQuery("insert");
+                int retVal = adoTemplate.ExecuteNonQuery("insert into DUMMY_TABLE(COL_ID) values ('1')");
+                Assert.AreEqual(retVal, 1);
             }
         }
 
         [TestMethod()]
-        public void ExecuteNonQueryTest1()
+        public void ExecuteNonQueryTest_WithParameters()
         {
-            Assert.Fail();
-        }
+            var factory = DbProviderFactories.GetFactory(providerName);
+            var connection = factory.CreateConnection();
+            var mockDbProvider = new MockDbProvider(connection, connectionString);
 
-        [TestMethod()]
-        public void ExecuteNonQueryTest2()
-        {
-            Assert.Fail();
-        }
+            using (var adoTemplate = new AdoTemplate(mockDbProvider))
+            {
+                using (var opw = new MockDbParametersWrapper<string>(connection))
+                {
+                    opw.Bind(command => {
 
-        [TestMethod()]
-        public void QueryForObjectTest()
-        {
-            Assert.Fail();
-        }
+                        opw["param"] = command.CreateParameter();
+                        opw["param"].Value = 1;
+                        opw["param"].DbType = DbType.String;
+                        opw["param"].Direction = ParameterDirection.Input;
+                    });
 
-        [TestMethod()]
-        public void QueryForObjectTest1()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest2()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest3()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest4()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void QueryForObjectTest5()
-        {
-            Assert.Fail();
-        }
+                    int retVal = adoTemplate.ExecuteNonQuery("insert into DUMMY_TABLE(COL_ID) values (:param1)", opw);
+                    Assert.AreEqual(retVal, 1);
+                }
+            }
+        }  
 
         [TestMethod()]
         public void QueryForListTest()

@@ -81,6 +81,8 @@
     <Compile Include="DataBase\MockDbProvider.cs" />
     <Compile Include="HelperClass\DummyTable.cs" />
     <Compile Include="HelperClass\DummyTableRowMapper.cs" />
+    <Compile Include="HelperClass\MockObject.cs" />
+    <Compile Include="HelperClass\MockRowMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

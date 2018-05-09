@@ -279,37 +279,7 @@ namespace AdoNetTemplate
         #endregion
 
         /// <summary>
-        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a result to an object via a <paramref name="rowMapper"/> and post process it via a <paramref name="objectFormatter"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cmdType">Text or Stored Procedure</param>
-        /// <param name="cmdText">The command text (Select)</param>
-        /// <param name="dbParameterSetter">The parameter setter to bind to the query</param>
-        /// <param name="rowMapper">maps a result to an object</param>
-        /// <returns></returns>
-        public T QueryForObject<T>(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter, IRowMapper<T> rowMapper)
-        {
-            return ConnectionUtils.RequiredUniqueResultSet(QueryForList(cmdType, cmdText, dbParameterSetter, rowMapper));
-        }
-
-
-        /// <summary>
-        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a set result row to a list of object via a <paramref name="resultSetExtractor"/> and post process with a <paramref name="resultSetProcessor"/>
-        /// </summary>
-        /// <typeparam name="T">the return type</typeparam>
-        /// <param name="cmdType">Text or Stored Procedure</param>
-        /// <param name="cmdText">The command text (Select)</param>
-        /// <param name="dbParameterSetter">The parameter setter to bind to the query</param>
-        /// <param name="resultSetExtractor">Maps a set of result to list of objects</param>
-        /// <param name="resultSetProcessor">Post process a list of objects</param>
-        /// <returns></returns>
-        public T QueryForObject<T>(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter, IResultSetExtractor<IList<T>> resultSetExtractor)
-        {
-            return ConnectionUtils.RequiredUniqueResultSet(QueryForList(cmdType, cmdText, dbParameterSetter, resultSetExtractor));
-        }
-
-        /// <summary>
-        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a result to an object via a <paramref name="rowMapper"/> and post process it via a <paramref name="objectFormatter"/>
+        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a result to an object via a <paramref name="rowMapper"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="cmdType">Text or Stored Procedure</param>
@@ -323,14 +293,13 @@ namespace AdoNetTemplate
         }
 
         /// <summary>
-        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a set result row to a list of object via a <paramref name="resultSetExtractor"/> and post process with a <paramref name="resultSetProcessor"/>
+        /// Executes a query with the specified command text and <paramref name="dbParameterSetter"/>, mapping a set result row to a list of object via a <paramref name="resultSetExtractor"/>
         /// </summary>
         /// <typeparam name="T">the return type</typeparam>
         /// <param name="cmdType">Text or Stored Procedure</param>
         /// <param name="cmdText">The command text (Select)</param>
         /// <param name="dbParameterSetter">The parameter setter to bind to the query</param>
         /// <param name="resultSetExtractor">Maps a set of result to list of objects</param>
-        /// <param name="resultSetProcessor">Post process a list of objects</param>
         /// <returns></returns>
         public IList<T> QueryForList<T>(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter, IResultSetExtractor<IList<T>> resultSetExtractor)
         {
@@ -338,14 +307,13 @@ namespace AdoNetTemplate
         }
 
         /// <summary>
-        /// Executes a query with the specified command text <paramref name="dbParameterSetter"/>, mapping a set result row to a list of object via a <paramref name="resultSetExtractor"/> and post process with a <paramref name="resultSetProcessor"/>
+        /// Executes a query with the specified command text <paramref name="dbParameterSetter"/>, mapping a set result row to a list of object via a <paramref name="resultSetExtractor"/>
         /// </summary>
         /// <typeparam name="T">the return type</typeparam>
         /// <param name="cmdType">Text or Stored Procedure</param>
         /// <param name="cmdText">The command text (Select)</param>
         /// <param name="dbParameterSetter">The parameter setter to bind to the query</param>
         /// <param name="resultSetExtractor">Maps a set of result to list of objects</param>
-        /// <param name="resultSetProcessor">Post process a list of objects</param>
         /// <returns></returns>
         public T ExecuteQuery<T>(CommandType cmdType, string cmdText, IDbParameterSetter dbParameterSetter, IResultSetExtractor<T> resultSetExtractor)
         {
@@ -462,12 +430,12 @@ namespace AdoNetTemplate
         {
             private static Logger logger = LogManager.GetCurrentClassLogger();
 
-            private IResultSetExtractor<T> _rse;
+            protected IResultSetExtractor<T> _rse;
 
-            private CommandType _commandType;
+            protected CommandType _commandType;
 
-            private string _commandText;
-            private IDbParameterSetter dbParameterSetter;
+            protected string _commandText;
+            protected IDbParameterSetter dbParameterSetter;
 
             public QueryCallback(CommandType cmdType,
                      string cmdText,
@@ -493,7 +461,7 @@ namespace AdoNetTemplate
                 get { return _commandText; }
             }
 
-            public T DoInCommand(IDbCommand command)
+            public virtual T DoInCommand(IDbCommand command)
             {
                 try
                 {
