@@ -75,7 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdoNetOracleExtensions.cs" />
     <Compile Include="Database\OracleDbProvider.cs" />
     <Compile Include="Database\OracleDbProviderTP.cs" />
     <Compile Include="Database\OracleFactory.cs" />

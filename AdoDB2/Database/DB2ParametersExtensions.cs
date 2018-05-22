@@ -1,6 +1,4 @@
-﻿
-
-using AdoDB2.Database;
+﻿using AdoDB2.Database;
 using IBM.Data.DB2;
 using IBM.Data.DB2Types;
 using System;
@@ -10,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdoDB2.Support
+namespace AdoDB2.Database
 {
     /// <summary>
     /// Provides support for <see cref="DB2ParametersWrapper{TKey}"/> class
